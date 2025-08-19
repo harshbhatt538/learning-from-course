@@ -15,7 +15,8 @@
 -b (bytes): Counts and extracts based on the actual byte size of each character, which can differ for multi-byte characters like those found in UTF-8. -c (characters): Counts and extracts based on the number of characters, considering each character as a unit, regardless of its byte size.
 
 
-8. tee :- 
+8. tee :-
+---------------------------------------------------------------------------------
 Main Use Cases:
 
 View the output of a command on the terminal while also saving it to a file.
@@ -23,6 +24,7 @@ Useful in logging or debugging pipelines.
 
 
 9. Alias
+----------------------------------------------------------------------------------
   1. Temporary alias (only for current shell session)
   using the alias command:
   
@@ -53,7 +55,8 @@ Useful in logging or debugging pipelines.
   
   /etc/bashrc
 
-10. locate 
+10. locate
+---------------------------------------------------------------------------------
   How it works:
   
   Uses a prebuilt database (via updatedb)
@@ -66,7 +69,8 @@ Useful in logging or debugging pipelines.
   Refresh database manually:
   sudo updatedb
 
-11. Find 
+11. Find
+---------------------------------------------------------------------------------
   find Real-Time, Filtered Search
   
   
@@ -103,3 +107,4 @@ Useful in logging or debugging pipelines.
   
   	
   	
+
