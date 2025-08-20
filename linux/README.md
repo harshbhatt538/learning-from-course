@@ -210,10 +210,120 @@ find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
 
 ---
 
-## Quick Comparison
-- `cat` → Shows file as it is.
-- `tac` → Reverses lines order.
-- `rev` → Reverses characters in each line.
+## 15. `head`
+- **Purpose**: Displays the **first N lines** of a file (default = 10 lines).
+- **Usage**:
+  ```bash
+  head file.txt
+  head -n 20 file.txt   # show first 20 lines
+  head -c 50 file.txt   # show first 50 characters
+  ```
+- **Example**:
+  ```bash
+  cat sample.txt
+  ```
+  ```
+  line1
+  line2
+  line3
+  line4
+  line5
+  line6
+  ```
+  ```bash
+  head -n 3 sample.txt
+  ```
+  Output:
+  ```
+  line1
+  line2
+  line3
+  ```
+
+---
+
+## 16. `tail`
+- **Purpose**: Displays the **last N lines** of a file (default = 10 lines).
+- **Usage**:
+  ```bash
+  tail file.txt
+  tail -n 15 file.txt   # show last 15 lines
+  tail -f logfile.log   # follow file in real-time
+  ```
+- **Example**:
+  ```bash
+  cat sample.txt
+  ```
+  ```
+  line1
+  line2
+  line3
+  line4
+  line5
+  line6
+  ```
+  ```bash
+  tail -n 2 sample.txt
+  ```
+  Output:
+  ```
+  line5
+  line6
+  ```
+
+---
+
+## 17. `sort`
+- **Purpose**: Sorts the contents of a file or input text line by line.
+- **Usage**:
+  ```bash
+  sort file.txt
+  ```
+
+###  Important Options for sort
+1. **`-r`** → Reverse the sorting order (descending).  
+   ```bash
+   sort -r file.txt
+   ```
+2. **`-n`** → Sort numerically (instead of alphabetically).  
+   ```bash
+   sort -n numbers.txt
+   ```
+3. **`-u`** → Remove duplicates (unique results only).  
+   ```bash
+   sort -u file.txt
+   ```
+4. **`-k`** → Sort based on a specific column/field.  
+   ```bash
+   sort -k 2 file.txt
+   ```
+5. **`-t`** → Define a custom delimiter (default = space/tab).  
+   ```bash
+   sort -t "," -k 2 file.csv
+   ```
+
+- **Example**:
+  ```bash
+  cat names.txt
+  ```
+  ```
+  Bob
+  Alice
+  Charlie
+  Alice
+  ```
+  ```bash
+  sort -u names.txt
+  ```
+  Output:
+  ```
+  Alice
+  Bob
+  Charlie
+  ```
+
+---
+
 
 
 ---
