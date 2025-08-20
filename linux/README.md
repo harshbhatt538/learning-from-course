@@ -324,6 +324,76 @@ find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
 
 ---
 
+---
+
+## 18. File Archiving and Compression
+
+### 18.1 `tar`
+```bash
+tar -cvf archive.tar file1 file2 dir/   # create
+tar -xvf archive.tar                    # extract
+tar -czvf archive.tar.gz file1 dir/     # gzip compress
+tar -xzvf archive.tar.gz                # gzip extract
+```
+
+### 18.2 `gzip`
+```bash
+gzip file.txt      # -> file.txt.gz
+gunzip file.txt.gz
+```
+
+### 18.3 `bzip2`
+```bash
+bzip2 file.txt      # -> file.txt.bz2
+bunzip2 file.txt.bz2
+```
+
+### 18.4 `xz`
+```bash
+xz file.txt      # -> file.txt.xz
+unxz file.txt.xz
+```
+
+### 18.5 `zip / unzip`
+```bash
+zip archive.zip file1 file2 dir/
+unzip archive.zip
+```
+
+---
+
+## 19. Software Repositories (APT in Ubuntu)
+
+### What is a Repository?
+Central storage for software packages + metadata. Used by `apt`.
+
+### Types of Repositories
+- **Main** → Official, free, supported by Canonical
+- **Universe** → Free, community-maintained
+- **Restricted** → Proprietary drivers/software
+- **Multiverse** → Copyright-restricted software
+
+### Check Enabled Repos
+```bash
+cat /etc/apt/sources.list
+lsb_release -a   # check codename
+```
+
+### Package Management
+```bash
+apt-cache search git   # search
+apt-cache show git     # details
+
+sudo apt-get update    # update package list
+sudo apt-get upgrade   # upgrade installed
+
+sudo apt-get remove <pkg>   # remove
+sudo apt-get purge <pkg>    # remove + configs
+sudo apt-get autoremove     # remove unused
+
+sudo apt-get clean          # remove all cached .deb
+sudo apt-get autoclean      # remove old/obsolete .deb
+```
 
 
 ---
