@@ -395,5 +395,35 @@ sudo apt-get clean          # remove all cached .deb
 sudo apt-get autoclean      # remove old/obsolete .deb
 ```
 
+## 20. `nice value (influence priority)`
+
+### Nice Value (nice)
+
+Range: -20 to +19
+
+- -20 = highest priority (most favorable)
+- +19 = lowest priority (least favorable)
+
+Default for most processes: 0
+
+```bash
+# start process with default priority
+sleep 200 &
+
+# check in top (NI=0, PR=20)
+
+# start low-priority process
+nice -n 15 sleep 200 &
+
+# check (NI=15, PR=35)
+
+# start high-priority (root only)
+sudo nice -n -10 sleep 200 &
+
+# adjust existing process
+renice -n 5 -p <pid>
+
+```
+
 
 ---
