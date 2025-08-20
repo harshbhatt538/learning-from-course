@@ -139,9 +139,8 @@ find . -name "*.log" -print0 | xargs -0 rm
 ```bash
 find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
 ```
-# Linux Commands: cat, tac, and rev
 
-## 1. `cat` (Concatenate and Display)
+## 12. `cat` (Concatenate and Display)
 - **Purpose**: Displays the content of a file or concatenates multiple files.
 - **Usage**:
   ```bash
@@ -159,7 +158,7 @@ find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
 
 ---
 
-## 2. `tac` (Reverse `cat`)
+## 13. `tac` (Reverse `cat`)
 - **Purpose**: Displays the contents of a file **in reverse order (line by line)**.
 - **Usage**:
   ```bash
@@ -186,7 +185,7 @@ find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
 
 ---
 
-## 3. `rev` (Reverse Characters)
+## 14. `rev` (Reverse Characters)
 - **Purpose**: Reverses each line of text, character by character.
 - **Usage**:
   ```bash
@@ -211,7 +210,7 @@ find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
 
 ---
 
-## ✅ Quick Comparison
+## Quick Comparison
 - `cat` → Shows file as it is.
 - `tac` → Reverses lines order.
 - `rev` → Reverses characters in each line.
