@@ -105,7 +105,7 @@ Performs real-time, flexible search through the file system.
 - Find by name:
 ```bash
 find /etc -name "nginx.conf"
-find /etc -iname "NGinx.conf" # for case insensitive 
+
 ```
 - Case-insensitive search:
 ```bash
@@ -135,5 +135,8 @@ find . -name "*.sh" -exec chmod +x {} \;
 ```bash
 find . -name "*.log" -print0 | xargs -0 rm
 ```
-
+- Combined with `exec`:
+```bash
+find . -maxdepth 1 -type f -size +0k -exec cp {} ./hey \;
+```
 ---
