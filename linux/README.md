@@ -101,7 +101,7 @@ sudo updatedb  # to refresh the database
 ### Description:
 Performs real-time, flexible search through the file system.
 
-### Common Examples:
+### Examples:
 - Find by name:
 ```bash
 find /etc -name "nginx.conf"
