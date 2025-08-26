@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-demo
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command: ["sh", "-c", "echo 'saved on node' > /data/host.txt && sleep 3600"]
+      volumeMounts:
+        - mountPath: /data
+          name: node-storage
+  volumes:
+    - name: node-storage
+      hostPath:
+        path: /tmp/k8s-data
+
