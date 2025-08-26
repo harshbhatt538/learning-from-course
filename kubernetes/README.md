@@ -41,7 +41,7 @@ Kubernetes has two main parts:
 
 ---
 
-### 🔹 Control Plane Components (Master Node)
+###   Control Plane Components (Master Node)
 
 **API Server**  
 - The **front door of Kubernetes**.  
@@ -64,7 +64,7 @@ Kubernetes has two main parts:
 
 ---
 
-### 🔹 Worker Node Components
+### Worker Node Components
 
 **kubelet**  
 - Agent on each worker node.  
@@ -79,7 +79,7 @@ Kubernetes has two main parts:
 
 ---
 
-### 🔹 How They Work Together (Quick Example)
+###   How They Work Together (Quick Example)
 
 ```shell
 kubectl apply -f nginx.yaml
@@ -111,12 +111,12 @@ Benefits:
 
 ## 4. Pod vs Container vs ReplicaSet vs Deployment
 
-### 🔹 Container
+###   Container
 - Smallest runnable unit.  
 - Runs one app (e.g., `nginx`).  
 - Kubernetes wraps containers into Pods.
 
-### 🔹 Pod
+###   Pod
 - Smallest deployable unit in Kubernetes.  
 - Can hold 1 or more containers.  
 - Shares network + storage.  
@@ -135,7 +135,7 @@ spec:
         - containerPort: 80
 ```
 
-### 🔹 ReplicaSet
+###   ReplicaSet
 - Ensures a specific number of identical Pods.  
 - Rarely created directly (Deployments manage them).  
 
@@ -160,7 +160,7 @@ spec:
           image: nginx:latest
 ```
 
-### 🔹 Deployment
+###   Deployment
 - Higher-level abstraction over ReplicaSets.  
 - Supports rolling updates & rollbacks.  
 - Most common object for apps.  
@@ -200,7 +200,7 @@ Summary:
 
 Pods are ephemeral (can die, restart, get new IPs). Services provide **stable networking**.
 
-### 🔹 ClusterIP (default)
+###   ClusterIP (default)
 - Internal access only.  
 - Example:
 ```yaml
@@ -217,15 +217,15 @@ spec:
   type: ClusterIP
 ```
 
-### 🔹 NodePort
+###   NodePort
 - Exposes app on `<NodeIP>:<NodePort>`.  
 - Used in dev/test.  
 
-### 🔹 LoadBalancer
+###   LoadBalancer
 - Cloud-managed public IP.  
 - Used in production.  
 
-### 🔹 ExternalName
+###   ExternalName
 - Maps service to external DNS.  
 
 ---
