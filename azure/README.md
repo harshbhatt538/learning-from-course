@@ -169,3 +169,137 @@ For production:
 ![Screenshot](image21.png)
 ![Screenshot](image22.png)
 ![Screenshot](image23.png)
+
+
+## 10. Blob Storage Service
+- **Task:**  
+  - Created a storage account.  
+  ![Screenshot](image24.png)
+  - Created a container and uploaded a file.  
+  ![Screenshot](image25.png)
+  ![Screenshot](image26.png)
+
+  - Enabled anonymous access for public access.  
+  ![Screenshot](image27.png)
+
+- **Concept Learned:**  
+  - **Azure Storage Explorer** provides GUI-based management of Blob, File, Queue, and Table storage.  
+  - Blob access levels can be modified for public or restricted use.  
+
+## 11. Azure Storage – Key Concepts
+- **Stored Access Policy:** Centrally control SAS token permissions/expiry.  
+- **Redundancy Options:**  
+  - **LRS:** Cheapest, single datacenter.  
+  - **ZRS:** Zone-resilient.  
+  - **GRS:** Geo-redundant, cross-region.  
+  - **GZRS:** Zone + Geo redundant, mission-critical.  
+- **Access Tiers:** Hot (frequent), Cool (infrequent), Cold (rare), Archive (long-term).  
+- **Lifecycle Policies:** Automate tiering and cleanup.  
+- **File Shares:** SMB/NFS compatible for hybrid lift-and-shift. 
+
+## 12. Manage Azure Identities and Governance
+
+Azure's identity and governance system is centered around **Microsoft Entra ID** (formerly Azure AD), which is like a supercharged IAM service.  
+The end goal is the same as AWS: **control who/what can do what to resources.**  
+
+**Key difference from AWS:**  
+- **AWS:** More *flat* → attach policies directly to users/groups/roles.  
+- **Azure:** More *hierarchical* → assign roles at different scopes and use policies for compliance. Multiple subscriptions allow segmenting billing/environments (e.g., dev vs prod), which isn't as baked into AWS accounts.  
+
+---
+
+### 1. Identities (Who or What Gets Access?)
+- **Users** → Individual accounts (like AWS users). Created in Entra ID, can be synced from on-prem AD or external (e.g., Microsoft accounts).  
+- **Groups** → Collections of users (like AWS groups). Use for bulk access—e.g., "DevTeam" group.  
+- **Service Principals / App Registrations** → For apps/services (like AWS service roles). Not for humans—e.g., an app needs to access a database.  
+- **Managed Identities** → Azure’s auto-managed version of service principals (no AWS direct equivalent).  
+  - **System-assigned:** Tied to a resource.  
+  - **User-assigned:** Reusable across resources.  
+  - No passwords—Azure handles auth.  
+
+  **Think:** Define the *who*—humans, teams, or machines/apps. Similar to AWS, but Managed Identities make app auth easier and more secure.  
+
+### 2. Access Management / Permissions (What Can They Do?)
+- **Role-Based Access Control (RBAC):** Built-in or custom roles (like AWS policies, but role-focused).  
+  - Examples: "Reader" = view only, "Contributor" = create/edit.  
+- **Role Assignments:** Attach a role to an identity (user/group/principal) **at a scope**.  
+  - **Scopes:**  
+    - **Subscription** → broad.  
+    - **Resource Group** → mid-level.  
+    - **Resource** → narrow.  
+- **Permissions:** Granular actions (e.g., `"Microsoft.Storage/storageAccounts/write"`).  
+  - Roles bundle these—e.g., assign **Storage Blob Data Contributor** to let someone upload blobs.  
+
+  **Think:** Grant access surgically. In AWS, you'd attach a policy to a role/user; in Azure, you assign a role to an identity at a scope.  
+
+### 3. Logical Grouping / Hierarchy (Where Does Access Apply?)
+- **Management Groups:** Top-level containers for organizing subscriptions (no direct AWS equivalent). Apply policies/RBAC once, cascades down.  
+- **Subscriptions:** Like mini-accounts. Each has billing/quotas (e.g., one for HR, one for IT). Multiple subs per tenant.  
+- **Resource Groups:** Logical buckets for related resources. Deploy/manage/delete as a unit. Access/Policies apply here.  
+
+  **Think:** Organize chaos.  
+Azure hierarchy = **Management Group > Subscription > Resource Group > Resource**.  
+AWS relies more on **tags/folders** in Organizations.  
+
+### 4. Governance / Compliance (Enforce Rules Automatically)
+- **Azure Policy:** JSON-based rules (like AWS Config/SCP). Enforce standards—e.g.,  
+  - "All VMs must be in Europe."  
+  - "Deny public blobs."  
+- **Initiatives (formerly Blueprints):** Groups of policies (like AWS policy sets). For reusable compliance packs (e.g., PCI-DSS baseline).  
+- **Resource Locks:** Prevent accidental deletes/changes (e.g., `CanNotDelete` lock on a critical DB).  
+- **Azure Advisor / Cost Management:** Recommendations & budgeting tools for governance + optimization.  
+
+  **Think:** Automate oversight. AWS has SCP/Organizations, but Azure Policy is more flexible for auditing + fixing issues.  
+
+### 5. Advanced / Integration Features
+- **Conditional Access:** Entra ID feature for MFA, location-based rules (like AWS MFA, but more dynamic).  
+- **Privileged Identity Management (PIM):** Just-in-time access (temporary role elevation; AWS has no built-in equivalent).  
+- **Microsoft Defender for Cloud:** Security governance layer (integrates with IAM for threat detection).  
+
+  **Think:** Extra layers for enterprise. These extend basics for **zero-trust** and complex governance needs.  
+
+###   Final Consulting Style Summary
+- **Identities** = Who or what gets access.  
+- **RBAC & Role Assignments** = What they can do.  
+- **Hierarchy (Mgmt Groups → Subs → RGs → Resources)** = Where access applies.  
+- **Governance (Policies, Initiatives, Locks, Advisor)** = Enforce compliance & prevent mistakes.  
+- **Advanced Features (PIM, Conditional Access, Defender)** = Enterprise-grade security & zero-trust.  
+
+---
+
+## 13. Azure Monitoring Services
+- **Data Collection:** Metrics (performance), Logs (detailed), Activity Logs (audit), Change Tracking.  
+- **Alerts & Automation:** Alerts, Action Groups, Autoscale.  
+- **Security Monitoring:** Defender for Cloud (posture), Sentinel (SIEM), Compliance reports. 
+
+- **Metrics**
+![Screenshot](image28.png)
+- **Alerts**
+![Screenshot](image29.png)
+![Screenshot](image30.png)
+- **•Alert notification**
+![Screenshot](image30.png)
+
+## 14. Azure Backups
+- **Task:** Configured backup for Azure VMs and storage.  
+- **Concept Learned:**  
+
+  **Backup Scopes:** VMs, Databases (SQL, SAP HANA), Files, On-prem servers.  
+  **Backup Types:** Full, Incremental, Differential/Log.  
+  **Vaults:** Recovery Services Vaults (modern, recommended).  
+  **Policies:** Define schedule + retention.  
+  **Redundancy:** LRS, ZRS, GRS (default), GZRS.  
+  **Security:** Encryption, Soft delete, Immutable vaults, Private endpoints. 
+
+## 15. Azure Resource Manager (ARM)
+
+Azure Resource Manager (**ARM**) is Azure’s **deployment and management layer**.  
+It controls how resources are created, updated, and deleted.
+
+### Key Points
+- **Resource Providers:** Services like `Microsoft.Compute`, `Microsoft.Storage`.  
+- **Resources & RGs:** Resources live inside **Resource Groups** (logical containers).  
+- **ARM Templates:** JSON files for Infrastructure as Code (idempotent, reusable).  
+- **Scopes:** Management Group → Subscription → Resource Group → Resource.  
+- **Benefits:** Consistency, automation, governance (RBAC + Policy), tagging. 
+
